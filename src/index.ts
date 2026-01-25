@@ -1,4 +1,5 @@
 import express, { Express } from "express";
+import { connectToDatabase } from "models";
 
 const startServer = async (): Promise<void> => {
     const application: Express = express();
@@ -9,6 +10,8 @@ const startServer = async (): Promise<void> => {
     application.get("/", (_, response) => {
         response.status(200).send("Hello from stack overflow backend");
     });
+
+    connectToDatabase();
 
     const PORT: number = Number(process.env.PORT);
 
