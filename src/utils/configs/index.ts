@@ -13,10 +13,10 @@ export interface IDataBaseConfig {
 type DialectEnv = Dialect | undefined;
 
 export const dataBaseConfig: IDataBaseConfig = {
-    username: process.env.DB_USERNAME ?? "stack_overflow_user",
-    password: process.env.DB_PASSWORD ?? "14112005KIRILL",
-    database: process.env.DB_NAME ?? "stack_overflow_db",
-    host: process.env.DB_HOST ?? "localhost",
+    username: process.env.DB_USERNAME ?? "",
+    password: process.env.DB_PASSWORD ?? "",
+    database: process.env.DB_NAME ?? "",
+    host: process.env.DB_HOST ?? "",
     port: Number(process.env.DB_PORT) ?? 5432,
     dialect: (process.env.DB_DIALECT as DialectEnv) ?? "postgres",
     logging: process.env.DB_LOGGING === String(true),

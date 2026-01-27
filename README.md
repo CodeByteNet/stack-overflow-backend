@@ -56,11 +56,10 @@ cd stack-overflow-backend
 npm install
 ```
 ### Development
- **Start dev server** – runs Nest with ts-node, hot reload, and file watching.
+ **Start dev server** – runs ts-node, hot reload, and file watching.
    ```bash
    npm run dev
    ```
-   Fastify listens on [`http://localhost:PORT`](#environment-variables).
 
 ### Production / Preview
  **Build production bundle** – compiles TypeScript to `dist`.
@@ -94,7 +93,7 @@ Loaded through `dotenv` (`src/utils/config/applicationConfig/index.ts`, `src/uti
 |----------|-------------|---------|
 | `PORT` | Express HTTP port | `3000` |
 | `HOST` | Interface to bind Express (for Vite/remote access) | `0.0.0.0` |
-| `NODE_ENV` | `development` / `staging` / ` ` | `development` |
+| `NODE_ENV` | `development` / `staging` / `production` | `development` |
 | `DB_HOST` | PostgreSQL host | `localhost` |
 | `DB_PORT` | PostgreSQL port | `5432` |
 | `DB_NAME` | Database name | `studio_landing` |
