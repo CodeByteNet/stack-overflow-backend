@@ -93,7 +93,7 @@ Loaded through `dotenv` (`src/utils/config/applicationConfig/index.ts`, `src/uti
 |----------|-------------|---------|
 | `PORT` | Express HTTP port | `3000` |
 | `HOST` | Interface to bind Express (for Vite/remote access) | `0.0.0.0` |
-| `NODE_ENV` | `development` / `staging` / `production` | `development` |
+| `NODE_ENV` | `development` / `production` | `development` |
 | `DB_HOST` | PostgreSQL host | `localhost` |
 | `DB_PORT` | PostgreSQL port | `5432` |
 | `DB_NAME` | Database name | `studio_landing` |
