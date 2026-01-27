@@ -67,10 +67,6 @@ npm install
    ```bash
    npm run build
    ```
- **Preview compiled app** – launches the `dist` build to mimic staging/prod.
-   ```bash
-   npm run preview
-   ```
 
 ## NPM Scripts
 | Script | Description |
@@ -98,7 +94,7 @@ Loaded through `dotenv` (`src/utils/config/applicationConfig/index.ts`, `src/uti
 |----------|-------------|---------|
 | `PORT` | Express HTTP port | `3000` |
 | `HOST` | Interface to bind Express (for Vite/remote access) | `0.0.0.0` |
-| `NODE_ENV` | `development` / `staging` / `production` | `development` |
+| `NODE_ENV` | `development` / `staging` / ` ` | `development` |
 | `DB_HOST` | PostgreSQL host | `localhost` |
 | `DB_PORT` | PostgreSQL port | `5432` |
 | `DB_NAME` | Database name | `studio_landing` |
