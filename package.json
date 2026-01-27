@@ -1,0 +1,41 @@
+{
+  "name": "backend-learning",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev:app": "nodemon -r dotenv/config --exec ts-node src/index.ts",
+    "dev:db": "docker compose up -d",
+    "dev": "npm run dev:db && npm run dev:app",
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "format": "prettier --write ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kirill-Sidora/backend-learning.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Kirill-Sidora/backend-learning/issues"
+  },
+  "homepage": "https://github.com/Kirill-Sidora/backend-learning#readme",
+  "dependencies": {
+    "@types/express": "^5.0.6",
+    "@types/node": "^25.0.8",
+    "dotenv": "^17.2.3",
+    "express": "^5.2.1",
+    "pg": "^8.17.1",
+    "sequelize": "^6.37.7",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.1",
+    "typescript": "^5.9.3"
+  },
+  "devDependencies": {
+    "@types/swagger-jsdoc": "^6.0.4",
+    "@types/swagger-ui-express": "^4.1.8"
+  }
+}
