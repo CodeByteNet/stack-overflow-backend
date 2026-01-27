@@ -27,7 +27,6 @@ Table thread_statistic {
     id          uuid    [primary key]
     thread_id   uuid    [primary key]
     views_count int
-    is_new      boolean
     createdAt   timestamp
     updatedAt   timestamp
 }
