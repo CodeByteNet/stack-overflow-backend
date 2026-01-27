@@ -1,9 +1,9 @@
 import express, { Express } from "express";
 import swaggerUi from "swagger-ui-express";
+import handlerError from "./middlewares/handlerError";
 import { swaggerSpecification } from "./docs/swagger";
 import { connectToDatabase } from "./models";
 import { Paths } from "./utils/constants";
-import { dataBaseConfig } from "./utils/configs";
 
 const startServer = async (): Promise<void> => {
     const application: Express = express();
@@ -24,6 +24,8 @@ const startServer = async (): Promise<void> => {
     )
 
     const PORT: number = Number(process.env.PORT);
+
+    application.use(handlerError)
 
     application.listen(PORT, () => {
         console.log(
