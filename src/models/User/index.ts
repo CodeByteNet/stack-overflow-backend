@@ -31,6 +31,7 @@ export const initUserModel = (sequelize: Sequelize): typeof User => {
         },
         {
             sequelize,
+            underscored: true,
             tableName: "user",
             timestamps: true,
         }
