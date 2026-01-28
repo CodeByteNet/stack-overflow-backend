@@ -6,7 +6,7 @@ export interface IUserCreationAttributes
 
 export class User extends Model<IUser, IUserCreationAttributes> {
     public id!: string;
-    public username!: string;
+    public nickname!: string;
     public password!: string;
     public createdAt!: Date;
     public updatedAt!: Date;
@@ -20,7 +20,7 @@ export const initUserModel = (sequelize: Sequelize): typeof User => {
                 defaultValue: DataTypes.UUIDV4,
                 primaryKey: true,
             },
-            username: {
+            nickname: {
                 type: DataTypes.STRING,
                 allowNull: false,
             },
