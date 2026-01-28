@@ -1,5 +1,5 @@
 import { DataTypes, Model, Optional, Sequelize } from "sequelize";
-import { IUser } from "../../domains/userModel";
+import { IUser } from "../../domains/User";
 
 export interface IUserCreationAttributes
     extends Optional<IUser, "id" | "createdAt" | "updatedAt"> {}
