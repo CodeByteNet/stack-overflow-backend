@@ -1,5 +1,10 @@
 import { dataBaseConfig } from "./../utils/configs";
+import { initUserModel } from "./User";
 import { Sequelize } from "sequelize";
+
+const initializeModels = (): void => {
+    initUserModel(sequelize);
+}
 
 export const sequelize = new Sequelize(
     dataBaseConfig.database,
@@ -17,6 +22,7 @@ export const sequelize = new Sequelize(
 );
 
 export const connectToDatabase = async () => {
+    initializeModels();
     await sequelize.authenticate();
     await sequelize.sync();
 }
