@@ -7,4 +7,5 @@ export const applicationConfig = {
     nodeEnv: process.env.NODE_ENV ?? 'development',
     port: rawPort ? ApplicationConfigDefault.DEFAULT_PORT : rawPort,
     id: process.env.IP ?? ApplicationConfigDefault.DEFAULT_IP,
+    allowedCorsOrigins: !process.env.CORS_ORIGINS ? ApplicationConfigDefault.CORS_ORIGINS : JSON.parse(process.env.CORS_ORIGINS),
 }
