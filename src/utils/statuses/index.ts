@@ -42,6 +42,7 @@ export enum ErrorCode {
     INCORRECTED_NICKNAME = "INCORRECTED_NICKNAME",
     INCORRECTED_PASSWORD = "INCORRECTED_PASSWORD",
     USER_ALREADY_EXIST = "USER_ALREADY_EXIST",
+    USER_ENTITY_NOT_FOUND = "USER_ENTITY_NOT_FOUND",
     USERS_ENTITYES_NOT_FOUND = "USERS_ENTITYES_NOT_FOUND",
 };
 
@@ -50,5 +51,6 @@ export enum ErrorMessage {
     INCORRECTED_NICKNAME = "Incorrected nickname",
     INCORRECTED_PASSWORD = "Incorrected password",
     USER_ALREADY_EXIST = "User already exist",
+    USER_ENTITY_NOT_FOUND = "User entity not found",
     USERS_ENTITYES_NOT_FOUND = "Users entityes not found",
 }

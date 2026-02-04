@@ -20,6 +20,12 @@ class UserService {
         return users.map((user) => user.get({ plain: true }) as IUser);
     }
 
+    public async findUserByCredentials(nickname: string, password: string) {
+        const user = await User.findOne({ where: { nickname: nickname, password: password}})
+
+        return user;
+    }
+
     public async createUser(nickname: string, password: string) {
         return sequelize.transaction(async (transaction: Transaction) => {
             const user = await User.create(
