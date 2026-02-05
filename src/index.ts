@@ -1,4 +1,5 @@
 import cors from "cors";
+import router from "@routes/index";
 import express, { Express } from "express";
 import swaggerUi from "swagger-ui-express";
 import handlerError from "@middlewares/handlerError";
@@ -13,6 +14,8 @@ const startServer = async (): Promise<void> => {
 
     application.use(express.json());
     application.use(express.urlencoded({ extended: true }));
+
+    application.use(router);
 
     application.get("/health", (_, response) => {
         response.status(200).send("Hello from stack overflow backend");

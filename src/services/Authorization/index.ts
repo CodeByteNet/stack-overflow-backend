@@ -2,23 +2,10 @@ import UserService from "@services/User";
 import { ErrorCode, ErrorMessage, HTTPStatusCode } from "@utils/statuses";
 import { NAME_REGEX, PASSWORD_FORMAT_REGEXP } from "@utils/constants";
 import { HTTPError } from "@utils/errors/HTTPError";
-import { User } from "@models/User";
 
 const userService = new UserService();
 
 class AuthorizationService {
-    private async checkUserExist(nickname: string): Promise<void> {
-        const user = await User.findOne({ where: {nickname: nickname}});
-
-        if(user) {
-            throw new HTTPError(
-                HTTPStatusCode.BAD_REQUEST,
-                ErrorMessage.USER_ALREADY_EXIST,
-                ErrorCode.USER_ALREADY_EXIST,
-            )
-        }
-    }
-
     public async signUp(nickname: string, password: string) {
         const normalizedNickname: string = nickname.trim();
 
@@ -38,7 +25,13 @@ class AuthorizationService {
             )
         }
 
-        await this.checkUserExist(normalizedNickname);
+        if(await userService.isUserExist(nickname)) {
+            throw new HTTPError(
+                HTTPStatusCode.BAD_REQUEST,
+                ErrorMessage.USER_ALREADY_EXIST,
+                ErrorCode.USER_ALREADY_EXIST,
+            )
+        }
 
         const user = await userService.createUser(normalizedNickname, password);
 

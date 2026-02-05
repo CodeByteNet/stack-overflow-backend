@@ -7,6 +7,12 @@ import { IUser } from "@domains/User";
 import { User } from "@models/User";
 
 class UserService {
+    public async isUserExist(nickname: string): Promise<boolean> {
+        const user = await User.findOne({ where: {nickname: nickname}});
+
+        return !!user;
+    }
+
     public async getAllUsers(): Promise<IUser[]> {
         const users = await User.findAll();
 

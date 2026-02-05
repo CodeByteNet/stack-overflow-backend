@@ -54,3 +54,7 @@ export enum ErrorMessage {
     USER_ENTITY_NOT_FOUND = "User entity not found",
     USERS_ENTITYES_NOT_FOUND = "Users entityes not found",
 }
+
+export enum ResponseMessage {
+    OK = "OK",
+}
