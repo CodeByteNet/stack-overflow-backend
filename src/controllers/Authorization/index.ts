@@ -1,8 +1,8 @@
-import UserService from "@src/services/User";
-import AuthorizationService from "@src/services/Authorization";
-import { HTTPStatusCode, ResponseMessage } from "@src/utils/statuses";
+import AuthorizationService from "@services/Authorization";
+import UserService from "@services/User";
+import { sendSuccess } from "@utils/response";
+import { HTTPStatusCode, ResponseMessage } from "@utils/statuses";
 import { NextFunction, Request, Response } from "express";
-import { sendSuccess } from "@src/utils/response";
 
 const userService: UserService = new UserService();
 
@@ -15,7 +15,7 @@ class AuthorizationController {
         next: NextFunction,
     ): Promise<void> {
         try {
-            const normalizedNickname: string = (request.query.nickname as string).trim();
+            const normalizedNickname: string = (request.params.nickname as string).trim();
 
             const isUserExist: boolean = await userService.isUserExist(normalizedNickname)
 
