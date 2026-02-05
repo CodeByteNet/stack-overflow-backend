@@ -2,9 +2,9 @@ import UserService from "@services/User";
 import AuthorizationService from "@services/Authorization";
 import { ErrorCode, ErrorMessage, HTTPStatusCode, ResponseMessage } from "@utils/statuses";
 import { NextFunction, Request, Response } from "express";
+import { HTTPError } from "@utils/errors/HTTPError";
 import { sendSuccess } from "@utils/response";
 import { isString } from "@utils/typeGuards";
-import { HTTPError } from "@utils/errors/HTTPError";
 
 const userService: UserService = new UserService();
 
@@ -40,19 +40,11 @@ class AuthorizationController {
         try {
             const { nickname, password } = request.body;
             
-            if(!isString(nickname)) {
+            if(!isString(nickname) || !isString(password)) {
                 throw new HTTPError(
                     HTTPStatusCode.BAD_REQUEST,
-                    ErrorMessage.INCORRECTED_NICKNAME,
-                    ErrorCode.INCORRECTED_NICKNAME,
-                )
-            }
-
-            if(!isString(password)) {
-                throw new HTTPError(
-                    HTTPStatusCode.BAD_REQUEST,
-                    ErrorMessage.INCORRECTED_PASSWORD,
-                    ErrorCode.INCORRECTED_PASSWORD,
+                    ErrorMessage.BAD_CREDENTIALS,
+                    ErrorCode.BAD_CREDENTIALS,
                 )
             }
 
@@ -77,19 +69,11 @@ class AuthorizationController {
         try {
             const { nickname, password } = request.body;
 
-            if(!isString(nickname)) {
+            if(!isString(nickname) || !isString(password)) {
                 throw new HTTPError(
                     HTTPStatusCode.BAD_REQUEST,
-                    ErrorMessage.INCORRECTED_NICKNAME,
-                    ErrorCode.INCORRECTED_NICKNAME,
-                )
-            }
-
-            if(!isString(password)) {
-                throw new HTTPError(
-                    HTTPStatusCode.BAD_REQUEST,
-                    ErrorMessage.INCORRECTED_PASSWORD,
-                    ErrorCode.INCORRECTED_PASSWORD,
+                    ErrorMessage.BAD_CREDENTIALS,
+                    ErrorCode.BAD_CREDENTIALS,
                 )
             }
 
