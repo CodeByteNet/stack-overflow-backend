@@ -3,10 +3,80 @@ import { Router } from "express";
 
 const router = Router();
 
+/**
+ * @openapi
+ * /register:
+ *   post:
+ *      tags:
+ *          - User
+ *      summary: Register user account
+ *      responses:
+ *          201:
+ *              description: Account registered
+ *              content:
+ *                  application/json:
+ *                      schema:
+ *                          $ref: '#components/schemas/UserCreateRequest'
+ *          400:
+ *              description: Invalid payload
+ *              content:
+ *                  application/json:
+ *                      schema:
+ *                          $ref: '#components/schemas/ErrorResponse'
+ */
 router.post("/register", AuthorizationController.signUp);
 
+/**
+ * @openapi
+ * /login:
+ *   post:
+ *      tags:
+ *          - User
+ *      summary: Login user account
+ *      responses:
+ *          200:
+ *              description: Login successfull
+ *              content:
+ *                  application/json:
+ *                      schema:
+ *                          $ref: '#components/schemas/UserResponse'
+ *          400:
+ *              description: Invalid payload
+ *              content:
+ *                  application/json:
+ *                      schema:
+ *                          $ref: '#components/schemas/ErrorResponse'
+ */
 router.post("/login", AuthorizationController.signIn);
 
+/**
+ * @openapi
+ * /:
+ *   get:
+ *      tags:
+ *          - User
+ *      summary: Is user exist
+ *      parameters:
+ *          - in: query
+ *            name: nickname
+ *            required: true
+ *            schema:
+ *              type: string
+ *      responses:
+ *          200:
+ *              description: User exist
+ *              content:
+ *                  application/json:
+ *                      schema:
+ *                          $ref: '#components/schemas/UserResponse'
+ *          400:
+ *              description: Invalid query params
+ *              content:
+ *                  application/json:
+ *                      schema:
+ *                          $ref: '#components/schemas/ErrorResponse'
+ *  
+ */
 router.get("", AuthorizationController.checkUserExist);
 
 export default router;
