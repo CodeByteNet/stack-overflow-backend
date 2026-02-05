@@ -20,7 +20,9 @@ class AuthorizationService {
     }
 
     public async signUp(nickname: string, password: string) {
-        if(!NAME_REGEX.test(nickname)) {
+        const normalizedNickname: string = nickname.trim();
+
+        if(!NAME_REGEX.test(normalizedNickname)) {
             throw new HTTPError(
                 HTTPStatusCode.BAD_REQUEST,
                 ErrorMessage.INCORRECTED_NICKNAME,
@@ -36,15 +38,17 @@ class AuthorizationService {
             )
         }
 
-        await this.checkUserExist(nickname);
+        await this.checkUserExist(normalizedNickname);
 
-        const user = await userService.createUser(nickname, password);
+        const user = await userService.createUser(normalizedNickname, password);
 
         return user;
     }
 
     public async signIn(nickname: string, password: string) {
-        if(!NAME_REGEX.test(nickname)) {
+        const normalizedNickname: string = nickname.trim();
+
+        if(!NAME_REGEX.test(normalizedNickname)) {
             throw new HTTPError(
                 HTTPStatusCode.BAD_REQUEST,
                 ErrorMessage.INCORRECTED_NICKNAME,
@@ -60,7 +64,7 @@ class AuthorizationService {
             )
         }
 
-        const user = userService.findUserByCredentials(nickname, password);
+        const user = userService.findUserByCredentials(normalizedNickname, password);
 
         if(!user) {
             throw new HTTPError(

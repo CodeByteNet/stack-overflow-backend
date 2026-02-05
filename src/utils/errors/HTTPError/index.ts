@@ -9,6 +9,6 @@ export class HTTPError extends Error {
         super(message);
         this.statusCode = statusCode;
         this.code = code;
-        this.name = 'HTTTPError';
+        this.name = 'HTTPError';
     }
 }
