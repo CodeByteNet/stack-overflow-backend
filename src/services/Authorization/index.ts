@@ -7,7 +7,7 @@ import { User } from "@models/User";
 const userService = new UserService();
 
 class AuthorizationService {
-    public async checkUserExist(nickname: string): Promise<void> {
+    private async checkUserExist(nickname: string): Promise<void> {
         const user = await User.findOne({ where: {nickname: nickname}});
 
         if(user) {

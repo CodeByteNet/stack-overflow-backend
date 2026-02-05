@@ -35,7 +35,7 @@ class UserService {
         return sequelize.transaction(async (transaction: Transaction) => {
             const salt: number = 10;
             
-            const hashedPassword: string = bcrypt.hashSync(password, bcrypt.genSaltSync(salt));
+            const hashedPassword: string = await bcrypt.hash(password, bcrypt.genSaltSync(salt));
 
             const user = await User.create(
                 {
