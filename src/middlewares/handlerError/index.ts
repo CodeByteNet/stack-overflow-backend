@@ -1,4 +1,4 @@
-import { ErrorCode, HTTPStatusCode, ErrorMessage } from "../../utils/statuses";
+import { ErrorCode, HTTPStatusCode, ErrorMessage } from "@utils/statuses";
 import { NextFunction, Response, Request } from "express";
 
 interface IExtendedError extends Error {

@@ -1,12 +1,5 @@
-import { applicationConfig } from "../../utils/configs/applicationConfig";
+import { applicationConfig } from "@utils/configs/applicationConfig";
 import { CorsOptions } from "cors";
-
-export const ApplicationConfigDefault = {
-    SERVICE_NAME: "stack-overflow-backend",
-    DEFAULT_PORT: 3000,
-    DEFAULT_IP: "127.0.0.1",
-    CORS_ORIGINS: [],
-};
 
 export const Paths = {
     DOCS_PATH: "/docs",
@@ -26,3 +19,8 @@ export const corsOptions: CorsOptions = {
         AllowedCorsMethods.PATCH,
     ],
 };
+
+export const PASSWORD_FORMAT_REGEXP: RegExp =
+    /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;
+
+export const NAME_REGEX = /^[a-zA-Z0-9]{3,}$/;
