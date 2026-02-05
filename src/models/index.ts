@@ -1,5 +1,5 @@
-import { dataBaseConfig } from "./../utils/configs";
-import { initUserModel } from "./User";
+import { dataBaseConfig } from "@utils/configs";
+import { initUserModel } from "@models/User";
 import { Sequelize } from "sequelize";
 
 const initializeModels = (): void => {

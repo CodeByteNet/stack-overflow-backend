@@ -13,6 +13,15 @@
     "types": ["node"],
     "sourceMap": true,
     "baseUrl": "./src",
+    "paths": {
+      "@src/*": ["*"],
+      "@docs/*": ["docs/*"],
+      "@domains/*": ["domains/*"],
+      "@middlewares/*": ["middlewares/*"],
+      "@models/*": ["models/*"],
+      "@services/*": ["services/*"],
+      "@utils/*": ["utils/*"],
+    },
   },
   "include": ["src/**/*.ts", "src/**/*.d.ts"],
   "exclude": ["node_modules", "dist"]
