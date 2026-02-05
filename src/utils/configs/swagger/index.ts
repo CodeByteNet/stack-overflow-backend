@@ -1,5 +1,5 @@
-import { applicationConfig } from "../applicationConfig";
-import { Paths } from "./../../constants";
+import { applicationConfig } from "@utils/configs/applicationConfig";
+import { Paths } from "@utils/constants";
 import { Options } from "swagger-jsdoc";
 
 const definition = {

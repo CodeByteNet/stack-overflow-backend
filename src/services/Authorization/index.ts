@@ -1,8 +1,8 @@
-import UserService from "../User";
-import { ErrorCode, ErrorMessage, HTTPStatusCode } from "../../utils/statuses";
-import { NAME_REGEX, PASSWORD_FORMAT_REGEXP } from "../../utils/constants";
-import { HTTPError } from "../../utils/errors/HTTPError";
-import { User } from "../../models/User";
+import UserService from "@services/User";
+import { ErrorCode, ErrorMessage, HTTPStatusCode } from "@utils/statuses";
+import { NAME_REGEX, PASSWORD_FORMAT_REGEXP } from "@utils/constants";
+import { HTTPError } from "@utils/errors/HTTPError";
+import { User } from "@models/User";
 
 const userService = new UserService();
 

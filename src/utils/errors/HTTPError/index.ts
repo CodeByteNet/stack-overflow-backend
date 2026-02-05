@@ -1,4 +1,4 @@
-import { ErrorCode } from "../../../utils/statuses";
+import { ErrorCode } from "@utils/statuses";
 
 export class HTTPError extends Error {
     public readonly statusCode: number;

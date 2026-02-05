@@ -1,10 +1,10 @@
 import bcrypt from 'bcrypt';
-import { ErrorCode, ErrorMessage, HTTPStatusCode } from './../../utils/statuses';
-import { HTTPError } from './../../utils/errors/HTTPError';
-import { IUser } from "../../domains/User";
-import { User } from "../../models/User";
-import { sequelize } from "../../models";
+import { ErrorCode, ErrorMessage, HTTPStatusCode } from '@utils/statuses';
+import { HTTPError } from '@utils/errors/HTTPError';
+import { sequelize } from "@models/index";
 import { Transaction } from "sequelize";
+import { IUser } from "@domains/User";
+import { User } from "@models/User";
 
 class UserService {
     public async getAllUsers(): Promise<IUser[]> {

@@ -1,10 +1,10 @@
 import cors from "cors";
 import express, { Express } from "express";
 import swaggerUi from "swagger-ui-express";
-import handlerError from "./middlewares/handlerError";
-import { corsOptions, Paths } from "./utils/constants";
-import { swaggerSpecification } from "./docs/swagger";
-import { connectToDatabase } from "./models";
+import handlerError from "@middlewares/handlerError";
+import { corsOptions, Paths } from "@utils/constants";
+import { swaggerSpecification } from "@docs/swagger";
+import { connectToDatabase } from "@models/index";
 
 const startServer = async (): Promise<void> => {
     const application: Express = express();

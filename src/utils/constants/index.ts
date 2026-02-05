@@ -1,4 +1,4 @@
-import { applicationConfig } from "../../utils/configs/applicationConfig";
+import { applicationConfig } from "@utils/configs/applicationConfig";
 import { CorsOptions } from "cors";
 
 export const Paths = {
