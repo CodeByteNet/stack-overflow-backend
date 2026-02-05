@@ -1,8 +1,10 @@
-import AuthorizationService from "@services/Authorization";
 import UserService from "@services/User";
-import { sendSuccess } from "@utils/response";
-import { HTTPStatusCode, ResponseMessage } from "@utils/statuses";
+import AuthorizationService from "@services/Authorization";
+import { ErrorCode, ErrorMessage, HTTPStatusCode, ResponseMessage } from "@utils/statuses";
 import { NextFunction, Request, Response } from "express";
+import { sendSuccess } from "@utils/response";
+import { isString } from "@utils/typeGuards";
+import { HTTPError } from "@utils/errors/HTTPError";
 
 const userService: UserService = new UserService();
 
@@ -15,7 +17,7 @@ class AuthorizationController {
         next: NextFunction,
     ): Promise<void> {
         try {
-            const normalizedNickname: string = (request.params.nickname as string).trim();
+            const normalizedNickname: string = (request.query.nickname as string).trim();
 
             const isUserExist: boolean = await userService.isUserExist(normalizedNickname)
 
@@ -37,6 +39,22 @@ class AuthorizationController {
     ): Promise<void> {
         try {
             const { nickname, password } = request.body;
+            
+            if(!isString(nickname)) {
+                throw new HTTPError(
+                    HTTPStatusCode.BAD_REQUEST,
+                    ErrorMessage.INCORRECTED_NICKNAME,
+                    ErrorCode.INCORRECTED_NICKNAME,
+                )
+            }
+
+            if(!isString(password)) {
+                throw new HTTPError(
+                    HTTPStatusCode.BAD_REQUEST,
+                    ErrorMessage.INCORRECTED_PASSWORD,
+                    ErrorCode.INCORRECTED_PASSWORD,
+                )
+            }
 
             const user = await authorizationService.signUp(nickname, password);
 
@@ -58,6 +76,22 @@ class AuthorizationController {
     ): Promise<void> {
         try {
             const { nickname, password } = request.body;
+
+            if(!isString(nickname)) {
+                throw new HTTPError(
+                    HTTPStatusCode.BAD_REQUEST,
+                    ErrorMessage.INCORRECTED_NICKNAME,
+                    ErrorCode.INCORRECTED_NICKNAME,
+                )
+            }
+
+            if(!isString(password)) {
+                throw new HTTPError(
+                    HTTPStatusCode.BAD_REQUEST,
+                    ErrorMessage.INCORRECTED_PASSWORD,
+                    ErrorCode.INCORRECTED_PASSWORD,
+                )
+            }
 
             const user = await authorizationService.signIn(nickname, password);
 
