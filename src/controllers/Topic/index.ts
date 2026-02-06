@@ -1,3 +1,4 @@
+import bcrypt from 'bcrypt';
 import TopicService from "@services/Topic";
 import { HTTPStatusCode, ResponseMessage } from "@utils/statuses";
 import { NextFunction, Request, Response } from "express";
@@ -32,9 +33,9 @@ class TopicController {
         next: NextFunction,
     ): Promise<void> {
         try {
-            if(request.get(createTopicConfig.key) !== createTopicConfig.value) {
+            if(!(await bcrypt.compare(request.get(createTopicConfig.key) as string, createTopicConfig.value))) {
                 throw new Error();
-            }
+            };
 
             const { name } = request.body;
 
