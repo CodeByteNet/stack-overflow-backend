@@ -8,7 +8,7 @@ const router = Router();
  * /auth/register:
  *   post:
  *      tags:
- *          - User
+ *          - Authorization
  *      summary: Register user account
  *      parameters:
  *          - in: body
@@ -42,7 +42,7 @@ router.post("/register", AuthorizationController.signUp);
  * /auth/login:
  *   post:
  *      tags:
- *          - User
+ *          - Authorization
  *      summary: Login user account
  *      parameters:
  *          - in: body
@@ -76,7 +76,7 @@ router.post("/login", AuthorizationController.signIn);
  * /auth?nickname:
  *   get:
  *      tags:
- *          - User
+ *          - Authorization
  *      summary: Is user exist
  *      parameters:
  *          - in: query
