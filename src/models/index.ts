@@ -11,8 +11,8 @@ const initializeModels = (): void => {
     initCommentModel(sequelize);
     initThreadStatisticModel(sequelize);
 
-    Comment.hasMany(User, { foreignKey: "id", as: "user"});
-    User.belongsTo(Comment, { foreignKey: "id", as: "comments"});
+    User.hasMany(Comment, { foreignKey: "id", as: "comment"});
+    Comment.belongsTo(User, { foreignKey: "author_id", as: "user"});
 }
 
 export const sequelize = new Sequelize(
