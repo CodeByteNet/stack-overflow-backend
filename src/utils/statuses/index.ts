@@ -45,6 +45,7 @@ export enum ErrorCode {
     USER_ENTITY_NOT_FOUND = "USER_ENTITY_NOT_FOUND",
     USERS_ENTITYES_NOT_FOUND = "USERS_ENTITYES_NOT_FOUND",
     BAD_CREDENTIALS = "BAD_CREDENTIALS",
+    THREAD_NOT_FOUND = "THREAD_NOT_FOUND"
 };
 
 export enum ErrorMessage {
@@ -55,6 +56,7 @@ export enum ErrorMessage {
     USER_ENTITY_NOT_FOUND = "User entity not found",
     USERS_ENTITYES_NOT_FOUND = "Users entityes not found",
     BAD_CREDENTIALS = "Bad credentials",
+    THREAD_NOT_FOUND = "Thread not found",
 }
 
 export enum ResponseMessage {

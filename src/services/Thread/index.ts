@@ -1,3 +1,5 @@
+import { IComment } from "@domains/Comment";
+import { Comment } from "@models/Comment";
 import { IThread } from "@domains/Thread";
 import { sequelize } from "@models/index";
 import { Thread } from "@models/Thread";
@@ -30,6 +32,12 @@ class ThreadService {
             return thread.get({ plain: true }) as IThread;
         });
     }
+
+    public async getThreadCommentsByThreadId(threadId: string): Promise<IComment[]> {
+        const comments = await Comment.findAll({ where: { thread_id: threadId }});
+
+        return comments;
+    };
 }
 
 export default ThreadService;
