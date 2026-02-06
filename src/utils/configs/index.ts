@@ -23,11 +23,11 @@ export const dataBaseConfig: IDataBaseConfig = {
 };
 
 export interface ICreateTopicConfig {
-    key: string;
+    header: string;
     value: string;
 };
 
 export const createTopicConfig: ICreateTopicConfig = {
-    key: process.env.CT_KEY ?? "",
+    header: "create-topic",
     value: process.env.CT_VALUE ?? "",
 };
