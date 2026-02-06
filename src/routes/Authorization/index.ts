@@ -5,18 +5,29 @@ const router = Router();
 
 /**
  * @openapi
- * /register:
+ * /auth/register:
  *   post:
  *      tags:
  *          - User
  *      summary: Register user account
+ *      parameters:
+ *          - in: body
+ *            name: nickname
+ *            required: true
+ *            schema:
+ *              type: string
+ *          - in: body
+ *            name: password
+ *            required: true
+ *            schema:
+ *              type: string
  *      responses:
  *          201:
  *              description: Account registered
  *              content:
  *                  application/json:
  *                      schema:
- *                          $ref: '#components/schemas/UserCreateRequest'
+ *                          $ref: '#components/schemas/UserCreateResponse'
  *          400:
  *              description: Invalid payload
  *              content:
@@ -28,11 +39,22 @@ router.post("/register", AuthorizationController.signUp);
 
 /**
  * @openapi
- * /login:
+ * /auth/login:
  *   post:
  *      tags:
  *          - User
  *      summary: Login user account
+ *      parameters:
+ *          - in: body
+ *            name: nickname
+ *            required: true
+ *            schema:
+ *              type: string
+ *          - in: body
+ *            name: password
+ *            required: true
+ *            schema:
+ *              type: string
  *      responses:
  *          200:
  *              description: Login successfull
@@ -51,7 +73,7 @@ router.post("/login", AuthorizationController.signIn);
 
 /**
  * @openapi
- * /:
+ * /auth?nickname:
  *   get:
  *      tags:
  *          - User
