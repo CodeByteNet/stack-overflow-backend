@@ -1,3 +1,4 @@
+import { initThreadModel } from "@models/Thread";
 import { dataBaseConfig } from "@utils/configs";
 import { initTopicModel } from "@models/Topic";
 import { initUserModel } from "@models/User";
@@ -6,6 +7,7 @@ import { Sequelize } from "sequelize";
 const initializeModels = (): void => {
     initUserModel(sequelize);
     initTopicModel(sequelize);
+    initThreadModel(sequelize);
 }
 
 export const sequelize = new Sequelize(
