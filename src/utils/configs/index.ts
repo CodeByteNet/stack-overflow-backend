@@ -8,7 +8,7 @@ export interface IDataBaseConfig {
     port: number,
     dialect: Dialect,
     logging: boolean,
-}
+};
 
 type DialectEnv = Dialect | undefined;
 
@@ -20,4 +20,14 @@ export const dataBaseConfig: IDataBaseConfig = {
     port: Number(process.env.DB_PORT) ?? 5432,
     dialect: (process.env.DB_DIALECT as DialectEnv) ?? "postgres",
     logging: process.env.DB_LOGGING === String(true),
-}
+};
+
+export interface ICreateTopicConfig {
+    key: string;
+    value: string;
+};
+
+export const createTopicConfig: ICreateTopicConfig = {
+    key: process.env.CT_KEY ?? "",
+    value: process.env.CT_VALUE ?? "",
+};

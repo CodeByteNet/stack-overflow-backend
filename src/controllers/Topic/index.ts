@@ -1,6 +1,7 @@
 import TopicService from "@services/Topic";
 import { HTTPStatusCode, ResponseMessage } from "@utils/statuses";
 import { NextFunction, Request, Response } from "express";
+import { createTopicConfig } from "@utils/configs";
 import { sendSuccess } from "@utils/response";
 
 const topicService: TopicService = new TopicService();
@@ -31,21 +32,13 @@ class TopicController {
         next: NextFunction,
     ): Promise<void> {
         try {
-            const secretHeader = process.env.CREATE_TOPIC_HEADER;
-
-            if(!secretHeader) {
-                throw new Error("Variable CREATE_TOPIC_HEADER not loaded from .env file");
+            if(request.get(createTopicConfig.key) !== createTopicConfig.value) {
+                throw new Error();
             }
 
-            const requestHeadersKeys = Object.keys(request.headers);
+            const { name } = request.body;
 
-            if(!requestHeadersKeys.includes(secretHeader)) {
-                throw new Error("Error");
-            }
-
-            const topicName: string = request.headers[secretHeader] as string;
-
-            const topic = await topicService.createTopic(topicName);
+            const topic = await topicService.createTopic(name);
 
             sendSuccess(response, {
                 statusCode: HTTPStatusCode.CREATED,

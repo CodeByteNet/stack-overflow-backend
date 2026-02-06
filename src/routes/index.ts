@@ -1,5 +1,5 @@
-import authorizationRouter from "@routes/Authorization/index";
 import topicsRouter from "@routes/Topic/index";
+import authorizationRouter from "@routes/Authorization/index";
 import { Router } from "express";
 
 const router = Router();

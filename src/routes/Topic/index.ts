@@ -5,6 +5,6 @@ const router = Router();
 
 router.get("/", TopicController.getAllTopics);
 
-router.post("/new-topic", TopicController.createTopic);
+router.post("/", TopicController.createTopic);
 
 export default router;
