@@ -25,13 +25,11 @@ export const initCommentModel = (sequelize: Sequelize): typeof Comment => {
             },
             author_id: {
                 type: DataTypes.UUID,
-                defaultValue: DataTypes.UUIDV4,
-                primaryKey: true,
+                allowNull: false,
             },
             thread_id: {
                 type: DataTypes.UUID,
-                defaultValue: DataTypes.UUIDV4,
-                primaryKey: true,
+                allowNull: false,
             },
             comment_text: {
                 type: DataTypes.STRING,
