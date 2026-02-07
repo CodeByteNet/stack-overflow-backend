@@ -7,6 +7,12 @@ import { sendSuccess } from "@utils/response";
 
 const topicService: TopicService = new TopicService();
 
+const isHeaderAllowed = async (request: Request): Promise<void> => {
+    if(!(await bcrypt.compare(request.get(createTopicConfig.header) as string, createTopicConfig.value))) {
+        throw new Error();
+    };
+}
+
 class TopicController {
     private static async isHeaderAllowed(request: Request): Promise<void> {
         if(!(await bcrypt.compare(request.get(createTopicConfig.header) as string, createTopicConfig.value))) {
@@ -39,7 +45,7 @@ class TopicController {
         next: NextFunction,
     ): Promise<void> {
         try {
-            this.isHeaderAllowed(request);
+            isHeaderAllowed(request);
 
             const { name } = request.body;
 
