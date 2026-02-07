@@ -1,5 +1,5 @@
 import { initThreadStatisticModel } from "@models/ThreadStatistic";
-import { initCommentModel, Comment } from "@models/Comment";
+import { initThreadCommentModel, ThreadComment } from "@models/ThreadComment";
 import { initThreadModel, Thread } from "@models/Thread";
 import { initUserModel, User } from "@models/User";
 import { dataBaseConfig } from "@utils/configs";
@@ -10,14 +10,14 @@ const initializeModels = (): void => {
     initUserModel(sequelize);
     initTopicModel(sequelize);
     initThreadModel(sequelize);
-    initCommentModel(sequelize);
+    initThreadCommentModel(sequelize);
     initThreadStatisticModel(sequelize);
 
-    User.hasMany(Comment, { foreignKey: "author_id", as: "comments" });
-    Comment.belongsTo(User, { foreignKey: "author_id", as: "author" });
+    User.hasMany(ThreadComment, { foreignKey: "author_id", as: "ThreadComments" });
+    ThreadComment.belongsTo(User, { foreignKey: "author_id", as: "author" });
 
-    Thread.hasMany(Comment, { foreignKey: "thread_id", as: "comment"});
-    Comment.belongsTo(Thread, { foreignKey: "thread_id", as: "thread"});
+    Thread.hasMany(ThreadComment, { foreignKey: "thread_id", as: "ThreadComment"});
+    ThreadComment.belongsTo(Thread, { foreignKey: "thread_id", as: "thread"});
 }
 
 export const sequelize = new Sequelize(

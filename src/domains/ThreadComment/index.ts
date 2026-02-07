@@ -1,8 +1,8 @@
-export interface IComment {
+export interface IThreadComment {
     id: string,
     author_id: string,
     thread_id: string,
-    comment_text: string,
+    ThreadComment_text: string,
     createdAt?: Date,
     updatedAt?: Date,
 }

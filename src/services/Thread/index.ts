@@ -1,7 +1,7 @@
 import { ErrorCode, ErrorMessage, HTTPStatusCode } from "@utils/statuses";
+import { IThreadComment } from "@domains/ThreadComment";
+import { ThreadComment } from "@models/ThreadComment";
 import { HTTPError } from "@utils/errors/HTTPError";
-import { IComment } from "@domains/Comment";
-import { Comment } from "@models/Comment";
 import { IThread } from "@domains/Thread";
 import { sequelize } from "@models/index";
 import { Thread } from "@models/Thread";
@@ -11,7 +11,7 @@ interface IThreadContent {
     id: string;
     title: string;
     description: string;
-    comments: IComment[];
+    ThreadComments: IThreadComment[];
 }
 
 class ThreadService {
@@ -55,7 +55,7 @@ class ThreadService {
             );
         }
 
-        const comments = await Comment.findAll({
+        const ThreadComments = await ThreadComment.findAll({
             where: { thread_id: threadId },
         });
 
@@ -63,7 +63,7 @@ class ThreadService {
             id: thread.id,
             title: thread.title,
             description: thread.description,
-            comments: comments,
+            ThreadComments: ThreadComments,
         };
     }
 }

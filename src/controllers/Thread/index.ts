@@ -1,7 +1,9 @@
 import ThreadService from "@services/Thread";
-import { HTTPStatusCode, ResponseMessage } from "@utils/statuses";
+import { ErrorCode, ErrorMessage, HTTPStatusCode, ResponseMessage } from "@utils/statuses";
 import { NextFunction, Request, Response } from "express";
 import { sendSuccess } from "@utils/response";
+import { isString } from "@utils/typeGuards";
+import { HTTPError } from "@utils/errors/HTTPError";
 
 const threadService: ThreadService = new ThreadService();
 
@@ -13,6 +15,14 @@ class ThreadController {
     ): Promise<void> {
         try {
             const { topicId } = request.params;
+
+            if(!isString(topicId)) {
+                throw new HTTPError(
+                    HTTPStatusCode.BAD_REQUEST,
+                    ErrorMessage.BAD_CREDENTIALS,
+                    ErrorCode.BAD_CREDENTIALS,
+                )
+            }
 
             const threads = await threadService.getAllThreadsByTopicId(
                 topicId as string,
@@ -36,6 +46,14 @@ class ThreadController {
     ): Promise<void> {
         try {
             const { title, description, topic_id, author_id } = request.body;
+
+            if(!isString(title) || !isString(description) || !isString(topic_id) || !isString(author_id)) {
+                throw new HTTPError(
+                    HTTPStatusCode.BAD_REQUEST,
+                    ErrorMessage.BAD_CREDENTIALS,
+                    ErrorCode.BAD_CREDENTIALS,
+                )
+            }
 
             const thread = await threadService.createThread(
                 title,
@@ -62,6 +80,14 @@ class ThreadController {
     ): Promise<void> {
         try {
             const { threadId } = request.params;
+
+            if(!isString(threadId)) {
+                throw new HTTPError(
+                    HTTPStatusCode.BAD_REQUEST,
+                    ErrorMessage.BAD_CREDENTIALS,
+                    ErrorCode.BAD_CREDENTIALS,
+                )
+            }
 
             const threadContent = threadService.getThreadContentByThreadId(threadId as string);
 

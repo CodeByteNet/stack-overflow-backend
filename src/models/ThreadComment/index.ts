@@ -1,22 +1,22 @@
 import { DataTypes, Optional, Sequelize, Model } from "sequelize";
-import { IComment } from "@domains/Comment";
+import { IThreadComment } from "@domains/ThreadComment";
 
-export interface ICommentCreationAttributes extends Optional<
-    IComment,
+export interface IThreadCommentCreationAttributes extends Optional<
+    IThreadComment,
     "id" | "createdAt" | "updatedAt"
 > {}
 
-export class Comment extends Model<IComment, ICommentCreationAttributes> {
+export class ThreadComment extends Model<IThreadComment, IThreadCommentCreationAttributes> {
     public id!: string;
     public author_id!: string;
     public thread_id!: string;
-    public comment_text!: string;
+    public ThreadComment_text!: string;
     public createdAt!: Date;
     public updatedAt!: Date;
 }
 
-export const initCommentModel = (sequelize: Sequelize): typeof Comment => {
-    Comment.init(
+export const initThreadCommentModel = (sequelize: Sequelize): typeof ThreadComment => {
+    ThreadComment.init(
         {
             id: {
                 type: DataTypes.UUID,
@@ -31,7 +31,7 @@ export const initCommentModel = (sequelize: Sequelize): typeof Comment => {
                 type: DataTypes.UUID,
                 allowNull: false,
             },
-            comment_text: {
+            ThreadComment_text: {
                 type: DataTypes.STRING,
                 allowNull: false,
             },
@@ -39,10 +39,10 @@ export const initCommentModel = (sequelize: Sequelize): typeof Comment => {
         {
             sequelize,
             underscored: true,
-            tableName: "comment",
+            tableName: "ThreadComment",
             timestamps: true,
         },
     );
 
-    return Comment;
+    return ThreadComment;
 };
