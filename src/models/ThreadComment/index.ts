@@ -8,8 +8,8 @@ export interface IThreadCommentCreationAttributes extends Optional<
 
 export class ThreadComment extends Model<IThreadComment, IThreadCommentCreationAttributes> {
     public id!: string;
-    public author_id!: string;
-    public thread_id!: string;
+    public authorId!: string;
+    public threadId!: string;
     public ThreadComment_text!: string;
     public createdAt!: Date;
     public updatedAt!: Date;
@@ -23,11 +23,11 @@ export const initThreadCommentModel = (sequelize: Sequelize): typeof ThreadComme
                 defaultValue: DataTypes.UUIDV4,
                 primaryKey: true,
             },
-            author_id: {
+            authorId: {
                 type: DataTypes.UUID,
                 allowNull: false,
             },
-            thread_id: {
+            threadId: {
                 type: DataTypes.UUID,
                 allowNull: false,
             },

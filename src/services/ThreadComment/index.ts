@@ -13,8 +13,8 @@ class ThreadCommentService {
             const threadComment = await ThreadComment.create(
                 {
                     ThreadComment_text: ThreadCommentText,
-                    author_id: authorId,
-                    thread_id: threadId,
+                    authorId: authorId,
+                    threadId: threadId,
                 },
                 { transaction },
             );
