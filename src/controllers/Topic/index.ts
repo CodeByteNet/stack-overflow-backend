@@ -14,12 +14,6 @@ const isHeaderAllowed = async (request: Request): Promise<void> => {
 }
 
 class TopicController {
-    private static async isHeaderAllowed(request: Request): Promise<void> {
-        if(!(await bcrypt.compare(request.get(createTopicConfig.header) as string, createTopicConfig.value))) {
-            throw new Error();
-        };
-    }
-
     public static async getAllTopics(
         request: Request,
         response: Response,
