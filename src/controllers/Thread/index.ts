@@ -25,7 +25,7 @@ class ThreadController {
             }
 
             const threads = await threadService.getAllThreadsByTopicId(
-                topicId as string,
+                topicId
             );
 
             sendSuccess(response, {
@@ -89,7 +89,7 @@ class ThreadController {
                 )
             }
 
-            const threadContent = threadService.getThreadContentByThreadId(threadId as string);
+            const threadContent = threadService.getThreadContentByThreadId(threadId);
 
             sendSuccess(response, {
                 statusCode: HTTPStatusCode.OK,

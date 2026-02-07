@@ -1,14 +1,14 @@
 import ThreadCommentService from "@services/ThreadComment";
+import { Request, Response, NextFunction } from "express";
+import { HTTPError } from "@utils/errors/HTTPError";
+import { sendSuccess } from "@utils/response";
+import { isString } from "@utils/typeGuards";
 import {
     ErrorCode,
     ErrorMessage,
     HTTPStatusCode,
     ResponseMessage,
 } from "@utils/statuses";
-import { Request, Response, NextFunction } from "express";
-import { sendSuccess } from "@utils/response";
-import { isString } from "@utils/typeGuards";
-import { HTTPError } from "@utils/errors/HTTPError";
 
 const threadCommentService: ThreadCommentService = new ThreadCommentService();
 
