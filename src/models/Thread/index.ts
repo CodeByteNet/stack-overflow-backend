@@ -10,8 +10,8 @@ export class Thread extends Model<IThread, IThreadCreationAttributes> {
     public id!: string;
     public title!: string;
     public description!: string;
-    public author_id!: string;
-    public topic_id!: string;
+    public authorId!: string;
+    public topicId!: string;
     public createdAt!: Date;
     public updatedAt!: Date;
 }
@@ -32,11 +32,11 @@ export const initThreadModel = (sequelize: Sequelize): typeof Thread => {
                 type: DataTypes.STRING,
                 allowNull: false,
             },
-            author_id: {
+            authorId: {
                 type: DataTypes.STRING,
                 allowNull: false,
             },
-            topic_id: {
+            topicId: {
                 type: DataTypes.STRING,
                 allowNull: false,
             },

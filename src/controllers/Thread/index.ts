@@ -45,9 +45,9 @@ class ThreadController {
         next: NextFunction,
     ): Promise<void> {
         try {
-            const { title, description, topic_id, author_id } = request.body;
+            const { title, description, topicId, authorId } = request.body;
 
-            if(!isString(title) || !isString(description) || !isString(topic_id) || !isString(author_id)) {
+            if(!isString(title) || !isString(description) || !isString(topicId) || !isString(authorId)) {
                 throw new HTTPError(
                     HTTPStatusCode.BAD_REQUEST,
                     ErrorMessage.BAD_CREDENTIALS,
@@ -58,8 +58,8 @@ class ThreadController {
             const thread = await threadService.createThread(
                 title,
                 description,
-                topic_id,
-                author_id,
+                topicId,
+                authorId,
             );
 
             sendSuccess(response, {

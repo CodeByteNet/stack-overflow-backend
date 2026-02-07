@@ -1,7 +1,7 @@
 export interface IThreadStatistic {
     id: string,
-    thread_id: string,
-    views_count: number,
+    threadId: string,
+    viewsCount: number,
     createdAt?: Date,
     updatedAt?: Date,
 }

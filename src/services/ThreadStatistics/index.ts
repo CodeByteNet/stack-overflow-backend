@@ -10,8 +10,8 @@ class ThreadStatisticService {
         return sequelize.transaction(async (transaction: Transaction) => {
             const threadStatistic = await ThreadStatistic.create(
                 {
-                    thread_id: threadId,
-                    views_count: 0,
+                    threadId: threadId,
+                    viewsCount: 0,
                 },
                 {
                     transaction,
@@ -26,7 +26,7 @@ class ThreadStatisticService {
         threadId: string,
     ): Promise<ThreadStatistic | null> {
         const threadStatistic = await ThreadStatistic.findOne({
-            where: { thread_id: threadId },
+            where: { threadId: threadId },
         });
 
         return threadStatistic;
@@ -36,7 +36,7 @@ class ThreadStatisticService {
         threadId: string,
     ): Promise<IThreadStatistic> {
         const threadStatistic = await ThreadStatistic.findOne({
-            where: { thread_id: threadId },
+            where: { threadId: threadId },
         });
 
         if(!threadStatistic) {
@@ -47,7 +47,7 @@ class ThreadStatisticService {
             )
         }
 
-        threadStatistic.views_count = threadStatistic.views_count + 1;
+        threadStatistic.viewsCount = threadStatistic.viewsCount + 1;
 
         await threadStatistic.save();
 

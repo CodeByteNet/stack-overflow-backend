@@ -8,8 +8,8 @@ export interface IThreadStatisticCreationAttributes extends Optional<
 
 export class ThreadStatistic extends Model<IThreadStatistic, IThreadStatisticCreationAttributes> {
     public id!: string;
-    public thread_id!: string;
-    public views_count!: number;
+    public threadId!: string;
+    public viewsCount!: number;
     public createdAt!: Date;
     public updatedAt!: Date;
 }
@@ -22,12 +22,12 @@ export const initThreadStatisticModel = (sequelize: Sequelize): typeof ThreadSta
                 defaultValue: DataTypes.UUIDV4,
                 primaryKey: true,
             },
-            thread_id: {
+            threadId: {
                 type: DataTypes.UUID,
                 defaultValue: DataTypes.UUIDV4,
                 primaryKey: true,
             },
-            views_count: {
+            viewsCount: {
                 type: DataTypes.STRING,
                 defaultValue: 0,
                 allowNull: true,
