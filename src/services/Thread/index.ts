@@ -16,7 +16,7 @@ interface IThreadContent {
 
 class ThreadService {
     public async getAllThreadsByTopicId(topicId: string): Promise<IThread[]> {
-        const threads = await Thread.findAll({ where: { topic_id: topicId } });
+        const threads = await Thread.findAll({ where: { topicId: topicId } });
 
         return threads.map((thread) => thread.get({ plain: true }) as IThread);
     }
@@ -32,8 +32,8 @@ class ThreadService {
                 {
                     title: title,
                     description: description,
-                    author_id: authorId,
-                    topic_id: topicId,
+                    authorId: authorId,
+                    topicId: topicId,
                 },
                 { transaction },
             );
@@ -56,7 +56,7 @@ class ThreadService {
         }
 
         const ThreadComments = await ThreadComment.findAll({
-            where: { thread_id: threadId },
+            where: { threadId: threadId },
         });
 
         return {
