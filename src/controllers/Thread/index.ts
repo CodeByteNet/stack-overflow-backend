@@ -89,7 +89,7 @@ class ThreadController {
                 )
             }
 
-            const threadContent = threadService.getThreadContentByThreadId(threadId);
+            const threadContent = await threadService.getThreadContentByThreadId(threadId);
 
             sendSuccess(response, {
                 statusCode: HTTPStatusCode.OK,
