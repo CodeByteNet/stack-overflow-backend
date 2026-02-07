@@ -9,7 +9,7 @@ export interface IThreadStatisticCreationAttributes extends Optional<
 export class ThreadStatistic extends Model<IThreadStatistic, IThreadStatisticCreationAttributes> {
     public id!: string;
     public thread_id!: string;
-    public views_count!: string;
+    public views_count!: number;
     public createdAt!: Date;
     public updatedAt!: Date;
 }

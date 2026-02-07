@@ -1,18 +1,23 @@
 import { initThreadStatisticModel } from "@models/ThreadStatistic";
-import { initCommentModel, Comment } from "@models/Comment";
+import { initThreadCommentModel, ThreadComment } from "@models/ThreadComment";
+import { initThreadModel, Thread } from "@models/Thread";
+import { initUserModel, User } from "@models/User";
 import { dataBaseConfig } from "@utils/configs";
 import { initTopicModel } from "@models/Topic";
-import { initUserModel, User } from "@models/User";
 import { Sequelize } from "sequelize";
 
 const initializeModels = (): void => {
     initUserModel(sequelize);
     initTopicModel(sequelize);
-    initCommentModel(sequelize);
+    initThreadModel(sequelize);
+    initThreadCommentModel(sequelize);
     initThreadStatisticModel(sequelize);
 
-    User.hasMany(Comment, { foreignKey: "id", as: "comment"});
-    Comment.belongsTo(User, { foreignKey: "author_id", as: "user"});
+    User.hasMany(ThreadComment, { foreignKey: "author_id", as: "ThreadComments" });
+    ThreadComment.belongsTo(User, { foreignKey: "author_id", as: "author" });
+
+    Thread.hasMany(ThreadComment, { foreignKey: "thread_id", as: "ThreadComment"});
+    ThreadComment.belongsTo(Thread, { foreignKey: "thread_id", as: "thread"});
 }
 
 export const sequelize = new Sequelize(
