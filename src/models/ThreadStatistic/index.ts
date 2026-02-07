@@ -28,7 +28,7 @@ export const initThreadStatisticModel = (sequelize: Sequelize): typeof ThreadSta
                 primaryKey: true,
             },
             views_count: {
-                type: DataTypes.NUMBER,
+                type: DataTypes.STRING,
                 defaultValue: 0,
                 allowNull: true,
             },
