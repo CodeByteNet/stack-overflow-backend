@@ -11,7 +11,7 @@ interface IThreadContent {
     id: string;
     title: string;
     description: string;
-    ThreadComments: IThreadComment[];
+    comments: IThreadComment[];
 }
 
 class ThreadService {
@@ -63,7 +63,7 @@ class ThreadService {
             id: thread.id,
             title: thread.title,
             description: thread.description,
-            ThreadComments: ThreadComments,
+            comments: ThreadComments,
         };
     }
 }

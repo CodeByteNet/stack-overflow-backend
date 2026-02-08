@@ -19,10 +19,10 @@ class ThreadCommentController {
         next: NextFunction,
     ): Promise<void> {
         try {
-            const { threadCommentText, authorId, threadId } = request.body;
+            const { commentText, authorId, threadId } = request.body;
 
             if (
-                !isString(threadCommentText) ||
+                !isString(commentText) ||
                 !isString(authorId) ||
                 !isString(threadId)
             ) {
@@ -35,7 +35,7 @@ class ThreadCommentController {
 
             const threadComment =
                 await threadCommentService.createThreadComment(
-                    threadCommentText,
+                    commentText,
                     authorId,
                     threadId,
                 );
