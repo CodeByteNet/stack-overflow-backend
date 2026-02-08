@@ -1,0 +1,47 @@
+Table users {
+    id          uuid    [primary key]
+    nickname    varchar
+    password    varchar
+    createdAt   timestamp
+    updatedAt   timestamp
+}
+
+Table topics {
+    id          uuid    [primary key]
+    name        varchar
+    createdAt   timestamp
+    updatedAt   timestamp
+}
+
+Table threads {
+    id              uuid    [primary key]
+    title           varchar
+    description     varchar
+    author_id       varchar
+    topic_id        uuid    [primary key]
+    createdAt       timestamp
+    updatedAt       timestamp
+}
+
+Table thread_statistic {
+    id          uuid    [primary key]
+    thread_id   uuid    [primary key]
+    views_count int
+    createdAt   timestamp
+    updatedAt   timestamp
+}
+
+Table comments {
+    id          uuid    [primary key]
+    author_id   uuid    [primary key]
+    thread_id   uuid    [primary key]
+    commentText text
+    createdAt   timestamp
+    updatedAt   timestamp
+}
+
+Ref: topics.id > threads.topic_id
+Ref: users.id > threads.author_id
+Ref: users.id > comments.author_id
+Ref: comments.thread_id > threads.id
+Ref: thread_statistic.thread_id > threads.id
