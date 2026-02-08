@@ -1,11 +1,14 @@
 import ThreadService from "@services/Thread";
+import ThreadStatisticService from "@services/ThreadStatistics";
 import { ErrorCode, ErrorMessage, HTTPStatusCode, ResponseMessage } from "@utils/statuses";
 import { NextFunction, Request, Response } from "express";
+import { HTTPError } from "@utils/errors/HTTPError";
 import { sendSuccess } from "@utils/response";
 import { isString } from "@utils/typeGuards";
-import { HTTPError } from "@utils/errors/HTTPError";
 
 const threadService: ThreadService = new ThreadService();
+
+const threadStatisticService: ThreadStatisticService = new ThreadStatisticService();
 
 class ThreadController {
     public static async getAllThreadsByTopicId(
@@ -61,6 +64,8 @@ class ThreadController {
                 topicId,
                 authorId,
             );
+
+            await threadStatisticService.createStatistic(thread.id);
 
             sendSuccess(response, {
                 statusCode: HTTPStatusCode.CREATED,
