@@ -94,11 +94,11 @@ Loaded through `dotenv` (`src/utils/config/applicationConfig/index.ts`, `src/uti
 | `PORT` | Express HTTP port | `3000` |
 | `HOST` | Interface to bind Express (for Vite/remote access) | `0.0.0.0` |
 | `NODE_ENV` | `development` / `production` | `development` |
-| `DB_HOST` | PostgreSQL host | `localhost` |
-| `DB_PORT` | PostgreSQL port | `5432` |
-| `DB_NAME` | Database name | `studio_landing` |
-| `DB_USERNAME` | DB user | `postgres` |
-| `DB_PASSWORD` | DB password | `postgres` |
+| `POSTGRES_HOST` | PostgreSQL host | `localhost` |
+| `POSTGRES_PORT` | PostgreSQL port | `5432` |
+| `POSTGRES_DATABASE` | Database name | `studio_landing` |
+| `POSTGRES_USER` | DB user | `postgres` |
+| `POSTGRES_PASSWORD` | DB password | `postgres` |
 | `DB_DIALECT` | Sequelize dialect | `postgres` |
 | `DB_LOGGING` | SQL logging (true/false) | `false` |
 
