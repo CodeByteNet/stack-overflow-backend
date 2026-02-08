@@ -15,6 +15,6 @@ router.use("/threads", threadsRouter);
 
 router.use("/thread/comments", ThreadCommentRouter);
 
-router.use("/statistic", threadStatisticRouter);
+router.use("/thread", threadStatisticRouter);
 
 export default router; 
