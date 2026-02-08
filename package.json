@@ -7,7 +7,7 @@
     "dev:app": "nodemon -r dotenv/config -r tsconfig-paths/register --exec ts-node src/index.ts",
     "dev:db": "docker compose up -d",
     "dev": "npm run dev:db && npm run dev:app",
-    "build": "tsc && tsc-aslias",
+    "build": "tsc && tsc-alias",
     "start": "node -r dotenv/config dist/index.js",
     "format": "prettier --write ."
   },
