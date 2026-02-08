@@ -13,7 +13,7 @@ router.use("/topics", topicsRouter);
 
 router.use("/threads", threadsRouter);
 
-router.use("/thread-comments", ThreadCommentRouter);
+router.use("/thread/comments", ThreadCommentRouter);
 
 router.use("/thread-statistic", threadStatisticRouter);
 

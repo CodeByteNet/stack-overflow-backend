@@ -3,8 +3,8 @@ import { Router } from "express";
 
 const router = Router();
 
-router.get("/:threadId", ThreadStatisticController.getThreadStatisticByThreadId);
+router.get("/:threadId/statistic", ThreadStatisticController.getThreadStatisticByThreadId);
 
-router.patch("/:threadId/:userId", ThreadStatisticController.updateThreadStatisticByThreadId);
+router.patch("/thead/:threadId/user/:userId/statistic", ThreadStatisticController.updateThreadStatisticByThreadId);
 
 export default router;
