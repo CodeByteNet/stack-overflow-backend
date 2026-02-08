@@ -47,7 +47,7 @@ class ThreadStatisticService {
             )
         }
 
-        threadStatistic.viewsCount = threadStatistic.viewsCount + 1;
+        threadStatistic.viewsCount = Number(threadStatistic.viewsCount) + 1;
 
         await threadStatistic.save();
 
